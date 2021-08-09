@@ -1,11 +1,29 @@
-<div *ngFor="let prod of listaProdutos" class="card" style="width: 18rem;" style="margin: 5px 0px 5px 10px; width: 20%;">
-  <img [src]="prod.src"  class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">cod :{{prod.intCodProd}}</p>
-    <p class="card-text">Descrição : {{prod.desc  | formatName}}</p>
-    <p class="card-text">Preço : {{prod.preco  | formatCoin : 'R$'}}</p>
-    <p class="card-text">Estoque : {{prod.estoque}}</p>
-    <a href="#" class="btn btn-secondary" style="margin-right:10px;">Editar</a>
-    <a href="#" class="btn btn-danger">Excluir</a>
-  </div>
+<div style="margin: 5px 0px 0px 10px;">
+    <div class="mb-3" style="width: 30%;">
+        <input placeholder="pesquisar por um produto" type="email" class="form-control" [(ngModel)]="produtoPesquisado">
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Favoritos</label><br>
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Frageis</label>
+    </div>
+
 </div>
+
+<div *ngFor="let prod of listarProdutos()" class="card" style="width: 18rem;" style="margin: 5px 0px 5px 10px; width: 18%;" [hoverCard]="'rgb(236, 240, 241)'" [bgHover]="'rgba(210, 232, 238, 0.884)'">
+    <i [curtir]="prod.favorito" (click)="prod.favorito=!prod.favorito">{{ prod.favorito ? 'liked' : 'like'}}</i>
+    <img [src]="prod.src" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text"><b>cod  : </b>{{prod.intCodProd}}</p>
+        <p class="card-text"><b>Descrição : </b>{{prod.desc | formatName}}</p>
+        <p class="card-text"><b>Preço : </b>{{prod.preco | formatCoin : 'R$'}}</p>
+        <p class="card-text"><b>Estoque : </b>{{prod.estoque}}</p>
+        <a class="btn btn-secondary" (click)="editarProduto(prod.intCodProd)" style="margin-right:10px;">Editar</a>
+        <a class="btn btn-danger" (click)="excluirProduto(prod.intCodProd)">Excluir</a>
+    </div>
+</div>
+
+
+<!-- <i class="bi bi-bookmark-star-fill"></i> -->

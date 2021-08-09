@@ -23,6 +23,7 @@ export class ValidarCadastroService {
       preco: 11,
       estoque: 1,
       src: 'https://picsum.photos/id/237/200/300',
+      favorito:true
     },
     {
       intCodProd: 2,
@@ -30,6 +31,7 @@ export class ValidarCadastroService {
       preco: 51,
       estoque: 2,
       src: 'https://picsum.photos/id/237/200/300',
+      favorito:false
     },
     {
       intCodProd: 3,
@@ -37,6 +39,7 @@ export class ValidarCadastroService {
       preco: 44,
       estoque: 34,
       src: 'https://picsum.photos/id/237/200/300',
+      favorito:false
     },
   ];
 
@@ -95,4 +98,28 @@ export class ValidarCadastroService {
   getProdutos() {
     return this.produtos;
   }
+
+  excluirProduto(codProduto:number):void{
+
+    let indexProduto=0
+
+    /* Encontrar o indice do produto que deseja deletar */
+    this.produtos.findIndex((produto,index)=>{
+      if(produto.intCodProd==codProduto){
+        console.log(`index : ${index} | ${produto}`)
+        /* descober to indice será passado para uma variavel */
+        indexProduto=index
+      }
+    })
+
+    this.produtos.splice(indexProduto,1)
+
+    console.log(this.produtos)
+
+  }
+
+  editarProduto(codProd:number){
+    this.event.emit("editarProduto : "+codProd)
+  }
+
 }

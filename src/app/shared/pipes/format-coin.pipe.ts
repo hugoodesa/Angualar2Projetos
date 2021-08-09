@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FormatCoinPipe implements PipeTransform {
 
-  transform(value: number, ...args: unknown[]): string {
-    return args[0]+" : "+value.toFixed(2);
+  transform(value: any, ...args: unknown[]): string {
+    return args[0]+" : "+Number(value).toFixed(2);
   }
 
 }

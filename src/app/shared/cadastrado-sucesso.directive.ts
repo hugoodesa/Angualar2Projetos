@@ -12,14 +12,14 @@ export class CadastradoSucessoDirective {
 
   @Input() set cadastradoSucesso(cadastradoComSucesso:boolean){
     if(cadastradoComSucesso){
-      console.log(this.element)
+      //console.log(this.element)
       this.renderer.setAttribute(this.element.nativeElement,"class","alert alert-success")
       return
     }
 
       //@HostBinding('class') estiloAplicar:string="alert alert-danger"
       this.renderer.setAttribute(this.element.nativeElement,"class","alert alert-danger")
-      console.log('falso vindo da diretiva')
+      //console.log('falso vindo da diretiva')
   }
 
 

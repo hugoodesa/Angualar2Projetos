@@ -1,3 +1,4 @@
+import { AppComponent } from './../app.component';
 import { ValidarCadastroService } from './validar-cadastro.service';
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 
@@ -12,13 +13,12 @@ export class CadastrarProdutoComponent implements OnInit {
   statusCadastro: string = '';
   sucessoAoCadastrar:boolean=true
   fragil:boolean=true
-
-  aparecer:any=""
+  abaAtual:string=""
 
   ngOnInit(): void {
     this.validarCadastro.event.subscribe((msg) => {
       this.statusCadastro=msg
-      console.log(msg);
+      console.log("vindo cadastrar produto " + msg);
     });
   }
 
@@ -42,12 +42,14 @@ export class CadastrarProdutoComponent implements OnInit {
       preco,
       estoque,
       src: `https://picsum.photos/id/${codImg}/200/300`,
-      fragil:this.fragil
+      fragil:this.fragil,
+      favorito:false
     };
 
-    console.log(produtoTemplate)
+    //console.log(produtoTemplate)
 
     this.sucessoAoCadastrar=this.validarCadastro.addProdutoProdutos(produtoTemplate);
 
   }
+
 }
