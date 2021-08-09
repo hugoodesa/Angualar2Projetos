@@ -1,0 +1,11 @@
+<div *ngFor="let prod of listaProdutos" class="card" style="width: 18rem;" style="margin: 5px 0px 5px 10px; width: 20%;">
+  <img [src]="prod.src"  class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">cod :{{prod.intCodProd}}</p>
+    <p class="card-text">Descrição : {{prod.desc  | formatName}}</p>
+    <p class="card-text">Preço : {{prod.preco  | formatCoin : 'R$'}}</p>
+    <p class="card-text">Estoque : {{prod.estoque}}</p>
+    <a href="#" class="btn btn-secondary" style="margin-right:10px;">Editar</a>
+    <a href="#" class="btn btn-danger">Excluir</a>
+  </div>
+</div>

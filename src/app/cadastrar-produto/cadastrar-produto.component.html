@@ -1,0 +1,48 @@
+<div style="width: 30%;margin: 10px;">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Descrição</label>
+    <input type="text" class="form-control " placeholder="Toalha" #nomeProduto  />
+    <div class="form-text">
+      Deve conter mair que 8 caracteres e menos de 60.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Preço</label>
+    <input
+      type="number"
+      class="form-control"
+      placeholder="R$ 9.99"
+      #valorProduto
+    />
+    <div class="form-text">Deve estar preenchido e maior que zero</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Estoque Inicial</label>
+    <input type="number" class="form-control" placeholder="10" #valorEstoque />
+    <div class="form-text">Deve estar preenchido e maior que zero</div>
+  </div>
+  <div class="mb-3 form-check">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="exampleCheck1"
+      checked
+      (click)="transformarEmFragil()"
+    />
+    <label class="form-check-label" for="exampleCheck1">Frágil</label>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    (click)="
+      addProduto(nomeProduto.value, valorProduto.value, valorEstoque.value)
+    "
+  >
+    Cadastrar
+  </button>
+</div>
+
+<div [cadastradoSucesso]="sucessoAoCadastrar" class="alert alert-success" role="alert" style="margin-left: 10px;width: 30%;">
+  {{sucessoAoCadastrar ? 'Cadastrado com sucesso' : 'Erro ao cadastrar !'}}
+</div>
+
